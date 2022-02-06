@@ -21,7 +21,6 @@ const runApp = async () => {
 
   const instance = i18next.createInstance({
     lng: 'ru',
-    debug: true,
     resources: {
       ru,
     },
