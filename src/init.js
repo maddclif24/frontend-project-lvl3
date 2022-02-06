@@ -5,7 +5,7 @@ import ru from './locales/ru.js';
 import watchState from './watch.js';
 import app from './app.js';
 
-const runApp = () => {
+const runApp = async () => {
   const state = {
     form: {
       inputUrl: '',
