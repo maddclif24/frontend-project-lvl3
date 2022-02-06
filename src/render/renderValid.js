@@ -1,6 +1,4 @@
-import i18next from 'i18next';
-
-const renderValid = (state, path, value) => {
+const renderValid = (state, path, value, i18next) => {
   const input = document.querySelector('input');
   const validateParagh = document.querySelector('.feedback');
   if (path === 'form.error') {

@@ -6,12 +6,12 @@ import request from './render/axiosTimeout';
 import renderModal from './render/renderModal';
 import renderReadRss from './render/renderReadRss';
 
-const watchState = (state) => onChange(state, (path, value) => {
+const watchState = (state, i18next) => onChange(state, (path, value) => {
   switch (path) {
     case 'form.inputUrl':
       break;
     case 'validateForm':
-      renderValid(state, path, value);
+      renderValid(state, path, value, i18next);
       break;
     case 'form.error':
       renderValid(state, path, value);

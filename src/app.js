@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { setLocale } from 'yup';
 import * as yup from 'yup';
-import i18next from 'i18next';
 import axios from 'axios';
 import parserDom from './DOMparser';
 import generatedId from './generatedID';
@@ -17,7 +16,7 @@ const schema = yup.object().shape({
     .url()
     .required(),
 });
-const app = (state, watchState) => {
+const app = (state, watchState, i18next) => {
   const form = document.querySelector('form');
   const input = document.querySelector('input');
   input.addEventListener('input', (e) => {

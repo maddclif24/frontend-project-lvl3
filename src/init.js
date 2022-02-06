@@ -21,13 +21,14 @@ const runApp = async () => {
 
   const instance = i18next.createInstance({
     lng: 'ru',
+    debug: true,
     resources: {
       ru,
     },
   });
 
   instance.init().then(() => {
-    app(state, watchState(state));
+    app(state, watchState(state, instance), instance);
   });
 };
 
