@@ -19,9 +19,7 @@ const runApp = () => {
     validateForm: null,
   };
 
-  const i18nextInstance = i18next.createInstance();
-
-  i18nextInstance.init({
+  i18next.init({
     lng: 'ru',
     debug: true,
     resources: {

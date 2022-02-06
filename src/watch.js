@@ -1,5 +1,4 @@
 import onChange from 'on-change';
-// import i18next from 'i18next';
 import renderValid from './render/renderValid';
 import renderFeeds from './render/renderFeeds';
 import renderPost from './render/renderPost';
