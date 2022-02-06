@@ -29,4 +29,5 @@ const runApp = () => {
     app(state, watchState(state));
   });
 };
+
 export default runApp;
