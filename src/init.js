@@ -19,13 +19,14 @@ const runApp = async () => {
     validateForm: null,
   };
 
-  i18next.init({
+  const instance = i18next.createInstance({
     lng: 'ru',
-    debug: true,
     resources: {
       ru,
     },
-  }).then(() => {
+  });
+
+  instance.init().then(() => {
     app(state, watchState(state));
   });
 };
