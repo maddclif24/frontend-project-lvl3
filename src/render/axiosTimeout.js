@@ -39,7 +39,7 @@ const request = (state, rssLinks) => {
             });
           });
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console(error));
     });
     request(state, rssLinks);
   }, 5000);

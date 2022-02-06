@@ -3,7 +3,6 @@ import { setLocale } from 'yup';
 import * as yup from 'yup';
 import i18next from 'i18next';
 import axios from 'axios';
-// import uniqueId from 'lodash';
 import parserDom from './DOMparser';
 import generatedId from './generatedID';
 
@@ -68,7 +67,6 @@ const app = (state, watchState) => {
             }
           })
           .catch((errorNetwork) => {
-            console.log(errorNetwork.message);
             if (errorNetwork.message === "Cannot read properties of null (reading 'textContent')") {
               watchState.validateForm = 'is-invalid';
               watchState.form.error = i18next.t('invalidRss');
