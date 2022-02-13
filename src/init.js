@@ -2,7 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import i18next from 'i18next';
 import ru from './locales/ru.js';
-import watchState from './watch.js';
+// import watchState from './watch.js';
 import app from './app.js';
 
 const runApp = async () => {
@@ -27,7 +27,7 @@ const runApp = async () => {
   });
 
   instance.init().then(() => {
-    app(state, watchState(state, instance), instance);
+    app(state, instance);
   });
 };
 
