@@ -34,6 +34,7 @@ const config = {
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
+  performance: { hints: false },
 };
 
 module.exports = () => {
