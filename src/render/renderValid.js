@@ -9,9 +9,9 @@ const renderValid = (state, path, value, i18next) => {
   if (path === 'validateForm') {
     if (value === 'is-valid') {
       input.classList.remove('is-invalid');
-      validateParagh.textContent = i18next.t('isValid');
       validateParagh.classList.remove('text-danger');
       validateParagh.classList.add('text-success');
+      validateParagh.textContent = i18next.t('isValid');
       input.value = '';
       input.focus();
     }
