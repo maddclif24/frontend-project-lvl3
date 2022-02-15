@@ -37,37 +37,31 @@ const app = (state, watchState, i18next) => {
         axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(`${data.url}`)}&disableCache=true)`)
           .then((res) => {
             console.log(res, 'RESULT');
-            const type = res.data.status.content_type.substring(0, res.data.status.content_type.indexOf(';'));
-            if (type === 'text/html') {
-              watchState.validateForm = 'is-invalid';
-              watchState.form.error = i18next.t('invalidRss');
-            } else {
-              const parse = parserDom(res.data.contents);
-              watchState.validateForm = 'is-valid';
-              watchState.form.posts = generatedId([...parse.postsParse, ...state.form.posts]);
-              watchState.form.feeds = [parse.feedParse, ...state.form.feeds];
-              watchState.form.rssLinks = [res.data.status.url, ...state.form.rssLinks];
-              const buttonView = document.querySelectorAll('[data-bs-toggle=modal]');
-              buttonView.forEach((button) => {
-                button.addEventListener('click', (event) => {
-                  event.preventDefault();
-                  const currentEl = state.form.posts.find(({ id }) => id === event.target.id);
-                  watchState.form.currentPost = currentEl;
-                  watchState.form.readRss = [currentEl, ...state.form.readRss];
-                });
+            const parse = parserDom(res.data.contents);
+            watchState.validateForm = 'is-valid';
+            watchState.form.posts = generatedId([...parse.postsParse, ...state.form.posts]);
+            watchState.form.feeds = [parse.feedParse, ...state.form.feeds];
+            watchState.form.rssLinks = [res.data.status.url, ...state.form.rssLinks];
+            const buttonView = document.querySelectorAll('[data-bs-toggle=modal]');
+            buttonView.forEach((button) => {
+              button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const currentEl = state.form.posts.find(({ id }) => id === event.target.id);
+                watchState.form.currentPost = currentEl;
+                watchState.form.readRss = [currentEl, ...state.form.readRss];
               });
-              const linksView = document.querySelectorAll('.fw-bold');
-              linksView.forEach((link) => {
-                link.addEventListener('click', (event) => {
-                  const currentEl = state.form.posts.find(({ id }) => id === event.target.id);
-                  watchState.form.currentPost = currentEl;
-                  watchState.form.readRss = [currentEl, ...state.form.readRss];
-                });
+            });
+            const linksView = document.querySelectorAll('.fw-bold');
+            linksView.forEach((link) => {
+              link.addEventListener('click', (event) => {
+                const currentEl = state.form.posts.find(({ id }) => id === event.target.id);
+                watchState.form.currentPost = currentEl;
+                watchState.form.readRss = [currentEl, ...state.form.readRss];
               });
-            }
+            });
           })
           .catch((errorNetwork) => {
-            if (errorNetwork.message === "Cannot read properties of null (reading 'textContent')") {
+            if (errorNetwork.name === 'TypeError') {
               watchState.validateForm = 'is-invalid';
               watchState.form.error = i18next.t('invalidRss');
             }
