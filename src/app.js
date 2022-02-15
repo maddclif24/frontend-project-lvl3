@@ -36,6 +36,7 @@ const app = (state, watchState, i18next) => {
       .then((data) => {
         axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(`${data.url}`)}&disableCache=true)`)
           .then((res) => {
+            console.log(res, 'RESULT');
             const type = res.data.status.content_type.substring(0, res.data.status.content_type.indexOf(';'));
             if (type === 'text/html') {
               watchState.validateForm = 'is-invalid';
