@@ -25,7 +25,7 @@ const app = (state, watchState, i18next) => {
   });
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    watchState.form.disableButton = true;
+    watchState.form.disabledUI = true;
     if (state.form.rssLinks.includes(state.form.inputUrl)) {
       watchState.form.error = i18next.t('duplicateUrl');
       return;
@@ -59,7 +59,7 @@ const app = (state, watchState, i18next) => {
                 watchState.form.readRss = [currentEl, ...state.form.readRss];
               });
             });
-            watchState.form.disableButton = false;
+            watchState.form.disabledUI = false;
           })
           .catch((errorNetwork) => {
             if (errorNetwork.name === 'TypeError') {
