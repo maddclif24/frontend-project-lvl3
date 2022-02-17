@@ -5,6 +5,7 @@ import renderPost from './render/renderPost';
 import request from './render/axiosTimeout';
 import renderModal from './render/renderModal';
 import renderReadRss from './render/renderReadRss';
+import renderSendButton from './render/renderSendButton';
 
 const watchState = (state, i18next) => onChange(state, (path, value) => {
   switch (path) {
@@ -30,6 +31,9 @@ const watchState = (state, i18next) => onChange(state, (path, value) => {
       break;
     case 'form.readRss':
       renderReadRss(value);
+      break;
+    case 'form.disableButton':
+      renderSendButton(value);
       break;
     default:
       throw Error('Bobo))');

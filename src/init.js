@@ -15,6 +15,7 @@ const runApp = async () => {
       error: '',
       currentPost: null,
       readRss: [],
+      disableButton: false,
     },
     validateForm: null,
   };
