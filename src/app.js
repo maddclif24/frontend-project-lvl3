@@ -40,7 +40,7 @@ const app = (state, watchState, i18next) => {
             watchState.validateForm = 'is-valid';
             watchState.form.posts = generatedId([...parse.postsParse, ...state.form.posts]);
             watchState.form.feeds = [parse.feedParse, ...state.form.feeds];
-            watchState.form.rssLinks = [state.from.inputUrl, ...state.form.rssLinks];
+            watchState.form.rssLinks = [state.form.inputUrl, ...state.form.rssLinks];
             const buttonView = document.querySelectorAll('[data-bs-toggle=modal]');
             buttonView.forEach((button) => {
               button.addEventListener('click', (event) => {
