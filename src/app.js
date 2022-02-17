@@ -62,6 +62,7 @@ const app = (state, watchState, i18next) => {
             watchState.form.disabledUI = false;
           })
           .catch((errorNetwork) => {
+            watchState.form.disabledUI = false;
             if (errorNetwork.name === 'TypeError') {
               watchState.validateForm = 'is-invalid';
               watchState.form.error = i18next.t('invalidRss');
@@ -73,6 +74,7 @@ const app = (state, watchState, i18next) => {
           });
       })
       .catch((error) => {
+        watchState.form.disabledUI = false;
         watchState.validateForm = 'is-invalid';
         watchState.form.error = i18next.t(error.message);
       });
