@@ -28,6 +28,7 @@ const app = (state, watchState, i18next) => {
     watchState.form.disabledUI = true;
     if (state.form.rssLinks.includes(state.form.inputUrl)) {
       watchState.form.error = i18next.t('duplicateUrl');
+      watchState.form.disabledUI = false;
       return;
     }
     schema
