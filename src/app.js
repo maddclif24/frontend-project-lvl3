@@ -25,7 +25,6 @@ const app = (state, watchState, i18next) => {
   });
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    // console.log(state, 'STATE');
     if (state.form.rssLinks.includes(state.form.inputUrl)) {
       watchState.form.error = i18next.t('duplicateUrl');
       return;
@@ -37,12 +36,11 @@ const app = (state, watchState, i18next) => {
       .then((data) => {
         axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(`${data.url}`)}&disableCache=true)`)
           .then((res) => {
-            console.log(res);
             const parse = parserDom(res.data.contents);
             watchState.validateForm = 'is-valid';
             watchState.form.posts = generatedId([...parse.postsParse, ...state.form.posts]);
             watchState.form.feeds = [parse.feedParse, ...state.form.feeds];
-            watchState.form.rssLinks = [res.data.url, ...state.form.rssLinks];
+            watchState.form.rssLinks = [state.from.inputUrl, ...state.form.rssLinks];
             const buttonView = document.querySelectorAll('[data-bs-toggle=modal]');
             buttonView.forEach((button) => {
               button.addEventListener('click', (event) => {
