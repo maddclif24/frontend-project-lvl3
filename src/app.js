@@ -41,6 +41,7 @@ const app = (state, watchState, i18next) => {
             watchState.validateForm = 'is-valid';
             watchState.form.posts = generatedId([...parse.postsParse, ...state.form.posts]);
             watchState.form.feeds = [parse.feedParse, ...state.form.feeds];
+            console.log(res.data.status.url, 'RES URL');
             watchState.form.rssLinks = [res.data.status.url, ...state.form.rssLinks];
             const buttonView = document.querySelectorAll('[data-bs-toggle=modal]');
             buttonView.forEach((button) => {
