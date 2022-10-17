@@ -36,7 +36,7 @@ const app = (state, watchState, i18next) => {
         url: state.form.inputUrl,
       })
       .then((data) => {
-        axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(`${data.url}`)}&disableCache=true)`)
+        axios.get(`https://allorigins.hexlet.app/get?url=${encodeURIComponent(`${data.url}`)}&disableCache=true)`)
           .then((res) => {
             const parse = parserDom(res.data.contents);
             watchState.validateForm = 'is-valid';
