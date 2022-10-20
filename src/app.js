@@ -2,8 +2,8 @@
 import { setLocale } from 'yup';
 import * as yup from 'yup';
 import axios from 'axios';
-import parserDom from './DOMparser';
-import generatedId from './generatedID';
+import parserDom from './DOMparser.js';
+import generatedId from './generatedID.js';
 
 setLocale({
   string: {

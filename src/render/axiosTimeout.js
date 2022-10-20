@@ -1,18 +1,18 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
 import _ from 'lodash';
-import renderPost from './renderPost';
-import parserDom from '../DOMparser';
-import generatedId from '../generatedID';
-import renderModal from './renderModal';
-import renderReadRss from './renderReadRss';
+import renderPost from './renderPost.js';
+import parserDom from '../DOMparser.js';
+import generatedId from '../generatedID.js';
+import renderModal from './renderModal.js';
+import renderReadRss from './renderReadRss.js';
 
 const isEqual = (obj1, obj2) => obj1.title === obj2.title;
 
 const request = (state, rssLinks) => {
   setTimeout(() => {
     rssLinks.forEach((link) => {
-      axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(`${link}`)}&disableCache=true)`)
+      axios.get(`https://allorigins.hexlet.app/get?url=${encodeURIComponent(`${link}`)}&disableCache=true)`)
         .then((res) => {
           const parse = parserDom(res.data.contents).postsParse;
           const union = _.unionWith(state.form.posts, parse, isEqual);
@@ -39,7 +39,7 @@ const request = (state, rssLinks) => {
             });
           });
         })
-        .catch((error) => console(error));
+        .catch((error) => error);
     });
     request(state, rssLinks);
   }, 5000);
