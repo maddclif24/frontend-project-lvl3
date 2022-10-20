@@ -1,11 +1,11 @@
 import onChange from 'on-change';
-import renderValid from './render/renderValid';
-import renderFeeds from './render/renderFeeds';
-import renderPost from './render/renderPost';
-import request from './render/axiosTimeout';
-import renderModal from './render/renderModal';
-import renderReadRss from './render/renderReadRss';
-import renderDisabledUI from './render/renderDisabledUI';
+import renderValid from './render/renderValid.js';
+import renderFeeds from './render/renderFeeds.js';
+import renderPost from './render/renderPost.js';
+import request from './render/axiosTimeout.js';
+import renderModal from './render/renderModal.js';
+import renderReadRss from './render/renderReadRss.js';
+import renderDisabledUI from './render/renderDisabledUI.js';
 
 const watchState = (state, i18next) => onChange(state, (path, value) => {
   switch (path) {

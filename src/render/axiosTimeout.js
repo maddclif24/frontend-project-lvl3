@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
 import _ from 'lodash';
-import renderPost from './renderPost';
-import parserDom from '../DOMparser';
-import generatedId from '../generatedID';
-import renderModal from './renderModal';
-import renderReadRss from './renderReadRss';
+import renderPost from './renderPost.js';
+import parserDom from '../DOMparser.js';
+import generatedId from '../generatedID.js';
+import renderModal from './renderModal.js';
+import renderReadRss from './renderReadRss.js';
 
 const isEqual = (obj1, obj2) => obj1.title === obj2.title;
 
