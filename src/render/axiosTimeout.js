@@ -12,7 +12,7 @@ const isEqual = (obj1, obj2) => obj1.title === obj2.title;
 const request = (state, rssLinks) => {
   setTimeout(() => {
     rssLinks.forEach((link) => {
-      axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(`${link}`)}&disableCache=true)`)
+      axios.get(`https://allorigins.hexlet.app/get?url=${encodeURIComponent(`${link}`)}&disableCache=true)`)
         .then((res) => {
           const parse = parserDom(res.data.contents).postsParse;
           const union = _.unionWith(state.form.posts, parse, isEqual);
@@ -39,7 +39,7 @@ const request = (state, rssLinks) => {
             });
           });
         })
-        .catch((error) => console(error));
+        .catch((error) => error);
     });
     request(state, rssLinks);
   }, 5000);
